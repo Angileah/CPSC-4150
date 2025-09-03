@@ -1,4 +1,4 @@
-# qouteninja
+# qouteninja - practicing using Flutter
 
 A new Flutter project.
 
