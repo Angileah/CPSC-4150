@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'quote.dart';
 
 void main() {
@@ -24,6 +25,8 @@ class _QuoteListState extends State<QuoteList> {
   ];
 
   Widget quoteTemplate(Quote quote) {
+    final dateStr = DateFormat('MMM d, yyyy').format(quote.createdAt);
+
     return Card(
       margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
       child: Padding(
@@ -56,10 +59,15 @@ class _QuoteListState extends State<QuoteList> {
               ),
             ),
             const SizedBox(height: 12),
+            Text( 
+              dateStr,
+              style: TextStyle(fontSize: 12, color: Colors.grey[800]),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text('${quote.likes}', style: TextStyle(fontSize: 16)),
+                // Thumbs up buttone
                 IconButton(
                   icon: const Icon(Icons.thumb_up),
                   color: Colors.redAccent,
@@ -69,6 +77,26 @@ class _QuoteListState extends State<QuoteList> {
                     });
                   },
                 ),
+                // Trash can button
+                IconButton(
+                  icon: const Icon(Icons.delete),
+                  color: Colors.blue[400],
+                  onPressed: ()  async {
+                    final ok = await showDialog<bool>(
+                      context: context,
+                      builder: (_) => AlertDialog(
+                        title: const Text('Delete quote'),
+                        content: const Text('Are You Sure?'),
+                        actions: [
+                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
+                          ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('Confirm')),
+                        ],
+                      ),
+                    ) ?? false;
+
+                    if (ok) setState(() => quotes.remove(quote));
+                  }
+                )
               ],
             ),
           ],
@@ -78,6 +106,7 @@ class _QuoteListState extends State<QuoteList> {
   }
 
 
+  //Title of the Application
   @override
   Widget build(BuildContext context) {
     return Scaffold(
