@@ -1,16 +1,24 @@
 # api_app
+Flutter Random Dog API App
 
-A new Flutter project.
+Solo 3 - Fetch & Display Data from a Public API
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This Flutter app requests data from a public HTTP API, parses the JSON response, and displays a UI with proper loading and error states. 
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Fetches JSON data from the Dog CEO API (https://dog.ceo/api/breeds/image/random)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Parses JSON into a Dart model (DogImage)
+
+Displays a loading spinner while fetching
+
+Shows an error message with the Retry button if the request fails
+
+Displays the fetched image in a clean, centered UI
+
+The user can fetch a new image using the “New Dog” button
+
+
