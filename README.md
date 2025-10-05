@@ -22,4 +22,23 @@ Displays the fetched image in a clean, centered UI
 
 The user can fetch a new image using the “New Dog” button
 
+## How to run
+  This app requires access to the internet
+1. Make sure Flutter SDK is installed. To test this, run Flutter Doctor
+2. Clone the repository or navigate to your project folder
+3. Install dependencies:
+    run "fluttr pub get"
+4. Run the application:
+    flutter run
+5. Once the application is open, you can tap on the "New Dog" button to fetch a new random dog image.
+   If the app fails to fetch an image, the retry button allows the user to try again.
+
+## Edge Case Handling
+
+- If the API request fails (Ex, if no internet connection), the app will display an error message.
+- It will display a Retry button, and the user will be able to click on that and refresh once they are connected to the internet. 
+
+
+
+
 
