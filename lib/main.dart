@@ -1,125 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'quote.dart';
+import 'dog_page.dart';
 
+// The main function that runs the application
 void main() {
-  runApp(MaterialApp(
-    home: QuoteList(),
-  ));
+  runApp(MyApp());
 }
 
-// Stateful widget
-class QuoteList extends StatefulWidget {
-  const QuoteList({super.key});
-
-  @override
-  State<QuoteList> createState() => _QuoteListState();
-}
-// State class
-class _QuoteListState extends State<QuoteList> {
-
-  List<Quote> quotes = [
-    Quote(author: 'Oscar Wilde', text: 'Be yourself; everyone else is already taken', category: 'Embrace' ),
-    Quote(author: 'Oscar Wilde', text: 'I have nothing to declare except my genius', category: 'Confidence'),
-    Quote(author: 'Oscar Wilde', text: 'The truth is rarely pure and never simple', category: 'Truth' ),
-  ];
-
-  Widget quoteTemplate(Quote quote) {
-    final dateStr = DateFormat('MMM d, yyyy').format(quote.createdAt);
-
-    return Card(
-      margin: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Text(
-              quote.text,
-              style: TextStyle(
-                fontSize: 18.0,
-                color: Colors.grey[600],
-              ),
-            ),
-            const SizedBox(height: 6),
-            Text(
-              '- ${quote.author}',
-              style: TextStyle(
-                fontSize: 14,
-                color: Colors.grey[800],
-              ),
-            ),
-            SizedBox(height: 6),
-            Chip(
-              label: Text(
-                quote.category,
-                style: TextStyle(
-                  color: Colors.grey[800],
-                ),
-              ),
-            ),
-            const SizedBox(height: 12),
-            Text( 
-              dateStr,
-              style: TextStyle(fontSize: 12, color: Colors.grey[800]),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text('${quote.likes}', style: TextStyle(fontSize: 16)),
-                // Thumbs up buttone
-                IconButton(
-                  icon: const Icon(Icons.thumb_up),
-                  color: Colors.redAccent,
-                  onPressed: () {
-                    setState(() {
-                      quote.likes++;
-                    });
-                  },
-                ),
-                // Trash can button
-                IconButton(
-                  icon: const Icon(Icons.delete),
-                  color: Colors.blue[400],
-                  onPressed: ()  async {
-                    final ok = await showDialog<bool>(
-                      context: context,
-                      builder: (_) => AlertDialog(
-                        title: const Text('Delete quote'),
-                        content: const Text('Are You Sure?'),
-                        actions: [
-                          TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-                          ElevatedButton(onPressed: () => Navigator.pop(context, true), child: const Text('Confirm')),
-                        ],
-                      ),
-                    ) ?? false;
-
-                    if (ok) setState(() => quotes.remove(quote));
-                  }
-                )
-              ],
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-
-  //Title of the Application
+// The root widget of the application
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('Awesome Qoutes'),
-        centerTitle: true,
-        backgroundColor: Colors.redAccent,
-      ),
-      body: Column(
-        children: quotes.map((quote) => quoteTemplate(quote)).toList(),
-      ),
+    return MaterialApp(
+      title: 'API Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: DogPage(),
     );
   }
 }
-

@@ -1,4 +1,4 @@
-# qouteninja - practicing using Flutter
+# api_app
 
 A new Flutter project.
 
