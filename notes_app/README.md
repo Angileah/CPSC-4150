@@ -2,7 +2,7 @@
 
 Solo App
 
-## What those it do?
+## What does it do?
 Loom Link: https://www.loom.com/share/1c5eaf1bee034d46bb8656d225d819b6 
 The app stores a list of user-created text notes using 'shared_preferences'.
 Each note contains a single string field ('content').
