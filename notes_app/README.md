@@ -1,16 +1,23 @@
 # notes_app
 
-A new Flutter project.
+Solo App
 
-## Getting Started
+## What those it do?
+Loom Link: https://www.loom.com/share/1c5eaf1bee034d46bb8656d225d819b6 
+The app stores a list of user-created text notes using 'shared_preferences'.
+Each note contains a single string field ('content').
 
-This project is a starting point for a Flutter application.
+### Storage Choice
+I used shared_preferences because it provides easy storae for small notes or to-dos
 
-A few resources to get you started if this is your first Flutter project:
+## How to run
+1. Run 'flutter pub get'
+2. Launch the app in your emulator or device.
+3. Add notes using the text field + “Add” button.
+4. Close and reopen the app — data persists automatically.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Data Format
+Notes are saved as a JSON list of objects, for example
+[{"listt":"Complete solo app one"},{"list":"practice flutter"}]
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
